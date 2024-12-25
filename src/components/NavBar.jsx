@@ -63,8 +63,8 @@ import Box from "@mui/material/Box";
 function NavBar() {
   const pageList = [
     { name: "Home", path: "/home" },
-    { name: "About", path: "/about" },
     { name: "Products", path: "/products" },
+    { name: "About", path: "/about" },
     { name: "Logout", path: "/logout" },
   ];
 
