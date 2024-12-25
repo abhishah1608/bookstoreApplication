@@ -62,7 +62,7 @@ function LoginForm() {
 
   const handlesubmitclick = () => {
     if (validateFields() || true) {
-      navigate("/home");
+      navigate("/booklist");
     }
   };
 

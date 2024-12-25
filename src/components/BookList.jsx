@@ -1,6 +1,6 @@
 import NavBar from "./Navbar";
 
-function Products() {
+function BookList() {
   return (
     <>
       <NavBar />
@@ -9,4 +9,4 @@ function Products() {
   );
 }
 
-export default Products;
+export default BookList;
