@@ -2,10 +2,65 @@ import React from "react";
 import { Box, TextField, Button, Typography, Link } from "@mui/material";
 import loginBackground from "../assets/login_background.webp"; // Import the background image
 import { useNavigate } from "react-router-dom";
-import CloseIcon from "@mui/icons-material/Close";
+import validatePassword from "../helpers/validations/validatePassword";
+import validateEmailAddress from "../helpers/validations/validateEmailAddress";
+import Errortag from "./Error";
 
 export default function SignUp() {
   const [error_msg, setErrorMsg] = React.useState([]);
+
+  const clearError = (key1) => {
+    var errlist = error_msg;
+
+    errlist = errlist.filter((e) => {
+      return e.key != key1;
+    });
+
+    setErrorMsg(errlist);
+  };
+
+  const validateFields = () => {
+    var error_msg1 = [];
+    setErrorMsg(error_msg1);
+    const tempErrors = {
+      username: "",
+      password: "",
+      email: "",
+      confirm_password: "",
+    };
+
+    if (!SignUpForm.username.trim() || SignUpForm.username.length < 5) {
+      tempErrors.username =
+        "Username is required and must be at least 5 characters";
+    }
+
+    if (!validateEmailAddress(SignUpForm.email)) {
+      tempErrors.email = "Enter valid Email Address";
+    }
+
+    if (!validatePassword(SignUpForm.password)) {
+      tempErrors.password =
+        "Password must be at least 8 characters long, include one uppercase letter, one lowercase letter, one digit, and one special character.";
+    }
+
+    if (SignUpForm.confirm_password != SignUpForm.password) {
+      tempErrors.confirm_password =
+        "Password does not match with confirm password";
+    }
+
+    Object.keys(tempErrors).forEach((key) => {
+      var e1 = tempErrors[key];
+      if (e1) {
+        var msg = {
+          error: e1,
+          key: key,
+        };
+        error_msg1.push(msg);
+      }
+    });
+    setErrorMsg(error_msg1);
+    return Object.values(tempErrors).every((err) => err === "");
+  };
 
   const [SignUpForm, setformfields] = React.useState({
     username: "",
@@ -16,10 +71,8 @@ export default function SignUp() {
   const navigate = useNavigate();
 
   const handlesubmitclick = () => {
-    if (loginform.username === "Admin" && loginform.password === "12345") {
-      navigate("/home");
-    } else {
-      alert("error for Registration");
+    if (validateFields()) {
+      navigate("/booklist");
     }
   };
 
@@ -55,6 +108,8 @@ export default function SignUp() {
         <Typography variant="h5" sx={{ textAlign: "center", marginBottom: 2 }}>
           Register for the BookStore Website
         </Typography>
+
+        <Errortag error_msg={error_msg} setErrorMsg={setErrorMsg} />
 
         {/* Username Field */}
         <TextField

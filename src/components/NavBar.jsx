@@ -43,18 +43,6 @@ function NavBar() {
             </Button>
           ))}
         </Box>
-        {/* 
-        Logout Button
-        <Button
-          color="inherit"
-          onClick={handleLogout}
-          sx={{
-            textTransform: "none",
-            fontWeight: "bold",
-          }}
-        >
-          Logout
-        </Button> */}
       </Toolbar>
     </AppBar>
   );

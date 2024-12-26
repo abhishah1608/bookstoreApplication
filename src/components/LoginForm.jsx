@@ -1,16 +1,9 @@
 import React from "react";
-import {
-  Box,
-  TextField,
-  Button,
-  Typography,
-  Link,
-  IconButton,
-} from "@mui/material";
+import { Box, TextField, Button, Typography, Link } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import CloseIcon from "@mui/icons-material/Close";
 import loginBackground from "../assets/login_background.webp"; // Import the background image
 import validatePassword from "../helpers/validations/validatePassword";
+import Errortag from "./Error";
 
 function LoginForm() {
   const [error_msg, setErrorMsg] = React.useState([]);
@@ -21,16 +14,6 @@ function LoginForm() {
   });
 
   const navigate = useNavigate();
-
-  const clearError = (key1) => {
-    var errlist = error_msg;
-
-    errlist = errlist.filter((e) => {
-      return e.key != key1;
-    });
-
-    setErrorMsg(errlist);
-  };
 
   const validateFields = () => {
     var error_msg1 = [];
@@ -61,7 +44,7 @@ function LoginForm() {
   };
 
   const handlesubmitclick = () => {
-    if (validateFields() || true) {
+    if (validateFields()) {
       navigate("/booklist");
     }
   };
@@ -99,29 +82,7 @@ function LoginForm() {
           Login BookStore Website
         </Typography>
 
-        {error_msg && // Render only if error_msg exists
-          error_msg.map((e1) => (
-            <Box
-              key={e1.key}
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-                color: "red",
-                fontSize: "12px",
-                marginTop: 1,
-              }}
-            >
-              <span>{e1.error}</span>
-              <IconButton
-                size="small"
-                onClick={() => clearError(e1.key)}
-                sx={{ color: "red" }}
-              >
-                <CloseIcon fontSize="small" />
-              </IconButton>
-            </Box>
-          ))}
+        <Errortag error_msg={error_msg} setErrorMsg={setErrorMsg} />
 
         {/* Username Field */}
         <TextField
