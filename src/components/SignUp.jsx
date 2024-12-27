@@ -81,6 +81,7 @@ export default function SignUp() {
           const response = await postRequest(url, SignUpForm);
           if (response.UserId != 0) {
             localStorage.setItem("jwtToken", response.seckey);
+            localStorage.setItem("LoginId", response.LoginId);
             navigate("/booklist");
           } else {
             var error_msg1 = [];
