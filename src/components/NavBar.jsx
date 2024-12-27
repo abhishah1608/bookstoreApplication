@@ -17,10 +17,6 @@ function NavBar() {
     { name: "Logout", path: "/logout" },
   ];
 
-  const handleLogout = () => {
-    alert("Logged out successfully!");
-  };
-
   return (
     <AppBar position="static" sx={{ width: "100%" }}>
       <Toolbar sx={{ justifyContent: "space-between" }}>
