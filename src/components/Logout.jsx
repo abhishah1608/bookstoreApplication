@@ -7,6 +7,8 @@ export default function Logout() {
   useEffect(() => {
     // Perform logout logic (e.g., clearing user session or tokens)
 
+    localStorage.clear();
+
     // Redirect to the login page or home page
     navigate("/");
   }, [navigate]); // Dependency ensures this runs only once when the component mounts

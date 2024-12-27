@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import validatePassword from "../helpers/validations/validatePassword";
 import validateEmailAddress from "../helpers/validations/validateEmailAddress";
 import Errortag from "./Error";
+import postRequest from "../helpers/api/post";
 
 export default function SignUp() {
   const [error_msg, setErrorMsg] = React.useState([]);
@@ -72,7 +73,35 @@ export default function SignUp() {
 
   const handlesubmitclick = () => {
     if (validateFields()) {
-      navigate("/booklist");
+      (async () => {
+        try {
+          const url = "Login/AddUser";
+          var data = SignUpForm;
+          data.Signup = 1;
+          const response = await postRequest(url, SignUpForm);
+          if (response.UserId != 0) {
+            localStorage.setItem("jwtToken", response.seckey);
+            navigate("/booklist");
+          } else {
+            var error_msg1 = [];
+            var msg = {
+              error: "User is already Added",
+              key: "incorrect_u_p",
+            };
+            error_msg1.push(msg);
+            setErrorMsg(error_msg1);
+          }
+        } catch (error) {
+          var error_msg1 = [];
+          var msg = {
+            error: "Server side error",
+            key: "server_error",
+          };
+          console.log("error:" + error);
+          error_msg1.push(msg);
+          setErrorMsg(error_msg1);
+        }
+      })();
     }
   };
 

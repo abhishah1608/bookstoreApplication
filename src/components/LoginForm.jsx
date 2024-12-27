@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import loginBackground from "../assets/login_background.webp"; // Import the background image
 import validatePassword from "../helpers/validations/validatePassword";
 import Errortag from "./Error";
+import postRequest from "../helpers/api/post";
 
 function LoginForm() {
   const [error_msg, setErrorMsg] = React.useState([]);
@@ -45,7 +46,33 @@ function LoginForm() {
 
   const handlesubmitclick = () => {
     if (validateFields()) {
-      navigate("/booklist");
+      (async () => {
+        try {
+          const url = "Login/AddUser";
+
+          const response = await postRequest(url, loginform);
+          if (response.UserId != 0) {
+            localStorage.setItem("jwtToken", response.seckey);
+            navigate("/booklist");
+          } else {
+            var error_msg1 = [];
+            var msg = {
+              error: "Please enter correct Username and password",
+              key: "incorrect_u_p",
+            };
+            error_msg1.push(msg);
+            setErrorMsg(error_msg1);
+          }
+        } catch (error) {
+          var error_msg1 = [];
+          var msg = {
+            error: "Server side error",
+            key: "server_error",
+          };
+          error_msg1.push(msg);
+          setErrorMsg(error_msg1);
+        }
+      })();
     }
   };
 

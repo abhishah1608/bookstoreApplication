@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import PrivateRoute from "./PrivateRoute";
 import CartHistory from "./CartHistory";
 import Cart from "./Cart";
 import LoginForm from "./LoginForm";
@@ -10,10 +11,38 @@ function RouteConfig() {
   return (
     <Routes>
       <Route path="/" element={<LoginForm />} />
-      <Route path="/booklist" element={<BookList />} />
-      <Route path="/cart" element={<Cart />} />
-      <Route path="/history" element={<CartHistory />} />
-      <Route path="/logout" element={<Logout />} />
+      <Route
+        path="/booklist"
+        element={
+          <PrivateRoute>
+            <BookList />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/cart"
+        element={
+          <PrivateRoute>
+            <Cart />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/history"
+        element={
+          <PrivateRoute>
+            <CartHistory />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/logout"
+        element={
+          <PrivateRoute>
+            <Logout />
+          </PrivateRoute>
+        }
+      />
       <Route path="/SignUp" element={<SignUp />} />
     </Routes>
   );
