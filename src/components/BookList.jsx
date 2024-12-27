@@ -1,10 +1,24 @@
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import NavBar from "./Navbar";
+import getRequest from "../helpers/api/get";
 
 function BookList() {
+  const navigate = useNavigate();
   return (
     <>
       <NavBar />
-      <h1>Hello World from component products</h1>
+      {useEffect(() => {
+        // Example usage:
+        (async () => {
+          try {
+            const url = "Book/GetBooks";
+            const response = await getRequest(url);
+          } catch (error) {
+            console.error("Error:", error);
+          }
+        })();
+      }, [navigate])}
     </>
   );
 }
