@@ -1,5 +1,8 @@
+// import React libraries
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+
+// import the project dependencies.
 import postRequest from "../helpers/api/post";
 
 export default function Logout() {
@@ -13,6 +16,7 @@ export default function Logout() {
       try {
         const url = "Login/LogoutService" + "?loginId=" + loginId;
         const response = await postRequest(url, data);
+        // clear all the local storage
         localStorage.clear();
         // Redirect to the login page
         navigate("/");

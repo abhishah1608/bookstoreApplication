@@ -1,5 +1,8 @@
+// Import React Libraries.
 import React from "react";
 import { NavLink } from "react-router-dom";
+
+// import Material UI libraries.
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Button from "@mui/material/Button";

@@ -1,6 +1,9 @@
+// import React libraries.
 import React from "react";
 import { Box, TextField, Button, Typography, Link } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+
+// import project Dependencies.
 import loginBackground from "../assets/login_background.webp"; // Import the background image
 import validatePassword from "../helpers/validations/validatePassword";
 import Errortag from "./Error";

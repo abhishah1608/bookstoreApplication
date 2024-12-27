@@ -1,7 +1,12 @@
+// import React libraries
 import React from "react";
-import { Box, TextField, Button, Typography, Link } from "@mui/material";
-import loginBackground from "../assets/login_background.webp"; // Import the background image
 import { useNavigate } from "react-router-dom";
+
+// import Material UI libraties
+import { Box, TextField, Button, Typography, Link } from "@mui/material";
+
+// import the project dependencies.
+import loginBackground from "../assets/login_background.webp"; // Import the background image
 import validatePassword from "../helpers/validations/validatePassword";
 import validateEmailAddress from "../helpers/validations/validateEmailAddress";
 import Errortag from "./Error";
@@ -9,6 +14,14 @@ import postRequest from "../helpers/api/post";
 
 export default function SignUp() {
   const [error_msg, setErrorMsg] = React.useState([]);
+
+  const [SignUpForm, setformfields] = React.useState({
+    username: "",
+    password: "",
+    email: "",
+    confirm_password: "",
+  });
+  const navigate = useNavigate();
 
   const clearError = (key1) => {
     var errlist = error_msg;
@@ -62,14 +75,6 @@ export default function SignUp() {
     setErrorMsg(error_msg1);
     return Object.values(tempErrors).every((err) => err === "");
   };
-
-  const [SignUpForm, setformfields] = React.useState({
-    username: "",
-    password: "",
-    email: "",
-    confirm_password: "",
-  });
-  const navigate = useNavigate();
 
   const handlesubmitclick = () => {
     if (validateFields()) {

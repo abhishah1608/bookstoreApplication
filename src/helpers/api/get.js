@@ -1,4 +1,7 @@
+// import Axios as  third party library.
 import axios from "axios";
+
+// import Global configurations.
 import global from "../../configuration/global";
 
 /**

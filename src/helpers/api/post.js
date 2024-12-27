@@ -1,4 +1,7 @@
+// import Axios as  third party library.
 import axios from "axios";
+
+// import Global configurations.
 import global from "../../configuration/global";
 
 export default async function postRequest(url, data, customHeaders = {}) {
@@ -7,7 +10,7 @@ export default async function postRequest(url, data, customHeaders = {}) {
 
   const baseurl = global().BaseAPIURL + url;
 
-  // Add a request interceptor to include JWT token and custom headers
+  // Added a request interceptor to include JWT token and custom headers
   axiosInstance.interceptors.request.use(
     (config) => {
       const token = localStorage.getItem("jwtToken"); // Replace with your token retrieval logic

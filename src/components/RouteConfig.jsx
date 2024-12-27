@@ -1,4 +1,7 @@
+// import React libraries.
 import { Route, Routes } from "react-router-dom";
+
+// import dependencies from the project.
 import PrivateRoute from "./PrivateRoute";
 import CartHistory from "./CartHistory";
 import Cart from "./Cart";
