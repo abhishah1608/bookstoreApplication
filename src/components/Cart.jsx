@@ -1,10 +1,69 @@
+import React, { useState } from "react";
+
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Typography,
+  Button,
+  Paper,
+} from "@mui/material";
+
 import NavBar from "./Navbar";
 
 function Cart() {
+  var json = sessionStorage.getItem("CartList");
+  const [obj, setObj] = useState(JSON.parse(json));
   return (
     <>
       <NavBar />
-      <h1>Hello World from component Cart</h1>
+      <div style={{ textAlign: "center", marginTop: "20px" }}>
+        {/* Title */}
+        <Typography variant="h4" style={{ color: "red", marginBottom: "20px" }}>
+          --- Items Added In Cart ---
+        </Typography>
+
+        {/* Table */}
+        <TableContainer
+          component={Paper}
+          style={{ maxWidth: "600px", margin: "0 auto" }}
+        >
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell style={{ fontWeight: "bold" }}>Book Name</TableCell>
+                <TableCell style={{ fontWeight: "bold" }} align="center">
+                  Quantity
+                </TableCell>
+                <TableCell style={{ fontWeight: "bold" }} align="center">
+                  Total Price
+                </TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {obj.map((item, index) => (
+                <TableRow key={index}>
+                  <TableCell>{item.BookName}</TableCell>
+                  <TableCell align="center">{item.Quantity}</TableCell>
+                  <TableCell align="center">{item.Price}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+
+        {/* Button */}
+        <Button
+          variant="contained"
+          color="primary"
+          style={{ marginTop: "20px", padding: "10px 20px" }}
+        >
+          Buy
+        </Button>
+      </div>
     </>
   );
 }

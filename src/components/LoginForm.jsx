@@ -57,6 +57,7 @@ function LoginForm() {
           if (response.UserId != 0) {
             localStorage.setItem("jwtToken", response.seckey);
             localStorage.setItem("LoginId", response.LoginId);
+            sessionStorage.setItem("userId", response.UserId);
             navigate("/booklist");
           } else {
             var error_msg1 = [];

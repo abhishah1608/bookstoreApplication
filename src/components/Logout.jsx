@@ -18,6 +18,7 @@ export default function Logout() {
         const response = await postRequest(url, data);
         // clear all the local storage
         localStorage.clear();
+        sessionStorage.clear();
         // Redirect to the login page
         navigate("/");
       } catch (error) {}
