@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import {
   Table,
@@ -16,7 +17,19 @@ import NavBar from "./Navbar";
 
 function Cart() {
   var json = sessionStorage.getItem("CartList");
-  const [obj, setObj] = useState(JSON.parse(json));
+
+  const [obj, setObj] = useState(!json ? [] : JSON.parse(json));
+
+  if (!obj) {
+    setObj([]);
+  }
+
+  const navigate = useNavigate();
+
+  const RedirectToPaymentForm = function () {
+    navigate("/paymentform");
+  };
+
   return (
     <>
       <NavBar />
@@ -60,8 +73,9 @@ function Cart() {
           variant="contained"
           color="primary"
           style={{ marginTop: "20px", padding: "10px 20px" }}
+          onClick={RedirectToPaymentForm}
         >
-          Buy
+          Checkout Items
         </Button>
       </div>
     </>

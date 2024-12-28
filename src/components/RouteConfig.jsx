@@ -9,6 +9,8 @@ import LoginForm from "./LoginForm";
 import Logout from "./Logout";
 import SignUp from "./Signup";
 import BookList from "./BookList";
+import PaymentForm from "./PaymentForm";
+import PaymentStatus from "./PaymentStatus";
 
 function RouteConfig() {
   return (
@@ -46,6 +48,15 @@ function RouteConfig() {
           </PrivateRoute>
         }
       />
+      <Route
+        path="/paymentform"
+        element={
+          <PrivateRoute>
+            <PaymentForm />
+          </PrivateRoute>
+        }
+      />
+      <Route path="/paymentStatus/:sessionId" element={<PaymentStatus />} />
       <Route path="/SignUp" element={<SignUp />} />
     </Routes>
   );

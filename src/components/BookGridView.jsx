@@ -8,12 +8,11 @@ import { Button, Box } from "@mui/material";
 export default function BookGridView({ books, StoredCartList }) {
   var CartList = StoredCartList;
 
-  var list = sessionStorage.getItem("CartList");
-
-  if (!list) {
-    alert("first time");
-    sessionStorage.setItem("CartList", JSON.stringify(CartList));
+  if (!CartList) {
+    CartList = [];
   }
+
+  sessionStorage.setItem("CartList", JSON.stringify(CartList));
 
   function handleAdd(bookid, BookName, row) {
     var obj = CartList.filter((p) => {
@@ -22,13 +21,14 @@ export default function BookGridView({ books, StoredCartList }) {
     if (obj && obj.length != 0) {
       obj[0].Quantity = obj[0].Quantity + 1;
       obj[0].Price = row.BookPrice * obj[0].Quantity;
-      row.stock = row.stock - 1;
+      // row.stock = row.stock - 1;
     } else {
       var obj1 = {};
       obj1.BookId = bookid;
       obj1.Quantity = Number(1);
       obj1.Price = row.BookPrice * obj1.Quantity;
-      row.stock = row.stock - 1;
+      obj1.BookPrice = row.BookPrice;
+      // row.stock = row.stock - 1;
       obj1.userId = sessionStorage.getItem("userId");
       obj1.IsPurchased = "N";
       obj1.BookName = BookName;
@@ -46,7 +46,7 @@ export default function BookGridView({ books, StoredCartList }) {
       if (obj[0].Quantity >= 1) {
         obj[0].Quantity = obj[0].Quantity - 1;
         obj[0].Price = row.BookPrice * obj[0].Quantity;
-        row.stock = row.stock + 1;
+        // row.stock = row.stock + 1;
         sessionStorage.setItem("CartList", JSON.stringify(CartList));
       }
     }
