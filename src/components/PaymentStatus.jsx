@@ -48,7 +48,6 @@ export default function PaymentStatus() {
       var obj_removeCart = JSON.parse(removeCart);
 
       if (obj_removeCart && obj_removeCart.length > 0) {
-        alert(JSON.stringify(obj_removeCart));
         obj_removeCart.forEach((element) => {
           element.IsRemoved = 1;
           element.total = element.Price;

@@ -40,8 +40,6 @@ export default function PaymentForm() {
       lastName: "",
       email: "",
       phone: "",
-      email: "",
-      phone: "",
       country: "",
       state: "",
       city: "",

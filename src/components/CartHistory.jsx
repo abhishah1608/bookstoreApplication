@@ -35,32 +35,35 @@ export default function CartHistory() {
           Order History
         </Typography>
 
-        {/* Iterate through each order */}
-        {historyInfo.map((info, index) => (
-          <Box key={index} sx={{ marginBottom: "30px" }}>
-            {/* Order ID */}
-            <Typography variant="h6" sx={{ marginBottom: "10px" }}>
-              {info.OrderId}
-            </Typography>
+        {historyInfo && historyInfo.length >= 1 ? (
+          historyInfo?.map((info, index) => (
+            <Box key={index} sx={{ marginBottom: "30px" }}>
+              {/* Order ID */}
+              <Typography variant="h6" sx={{ marginBottom: "10px" }}>
+                {info.OrderId}
+              </Typography>
 
-            {/* Purchase Information */}
-            <List sx={{ display: "inline-block", textAlign: "left" }}>
-              {info.purchaseInfo.map((detail, idx) => (
-                <>
-                  <ListItem>
-                    <Typography>
-                      <strong>Book Name:</strong> {detail.BookName} &nbsp;
-                      <strong>Quantity:</strong> {detail.Quantity} &nbsp;
-                      <strong>Price:</strong> ₹
-                      {detail.total.toLocaleString("en-IN")}
-                    </Typography>
-                  </ListItem>
-                  {idx < info.purchaseInfo.length - 1 && <Divider />}
-                </>
-              ))}
-            </List>
-          </Box>
-        ))}
+              {/* Purchase Information */}
+              <List sx={{ display: "inline-block", textAlign: "left" }}>
+                {info?.purchaseInfo?.map((detail, idx) => (
+                  <>
+                    <ListItem>
+                      <Typography>
+                        <strong>Book Name:</strong> {detail.BookName} &nbsp;
+                        <strong>Quantity:</strong> {detail.Quantity} &nbsp;
+                        <strong>Price:</strong> ₹
+                        {detail.total.toLocaleString("en-IN")}
+                      </Typography>
+                    </ListItem>
+                    {idx < info.purchaseInfo.length - 1 && <Divider />}
+                  </>
+                ))}
+              </List>
+            </Box>
+          ))
+        ) : (
+          <p>No history available for this user Account.</p>
+        )}
       </Box>
     </>
   );
