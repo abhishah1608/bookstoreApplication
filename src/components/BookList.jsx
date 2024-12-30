@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
 
 // import the project dependencies.
-import NavBar from "./Navbar";
+import NavBar from "./NavBar";
 import getRequest from "../helpers/api/get";
 import BookGridView from "./BookGridView";
 import postRequest from "../helpers/api/post";
