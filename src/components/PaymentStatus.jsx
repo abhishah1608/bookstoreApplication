@@ -12,7 +12,7 @@ import {
   TableContainer,
 } from "@mui/material";
 
-import NavBar from "./Navbar";
+import NavBar from "./NavBar";
 import getRequest from "../helpers/api/get";
 import postRequest from "../helpers/api/post";
 

@@ -9,7 +9,7 @@ import {
   InputAdornment,
 } from "@mui/material";
 
-import NavBar from "./Navbar";
+import NavBar from "./NavBar";
 import Errortag from "./Error";
 import validateEmailAddress from "../helpers/validations/validateEmailAddress";
 import postRequest from "../helpers/api/post";

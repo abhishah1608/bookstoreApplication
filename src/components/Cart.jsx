@@ -13,7 +13,7 @@ import {
   Paper,
 } from "@mui/material";
 
-import NavBar from "./Navbar";
+import NavBar from "./NavBar";
 
 function Cart() {
   var json = sessionStorage.getItem("CartList");

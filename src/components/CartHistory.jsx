@@ -2,7 +2,7 @@ import { React, useState, useEffect } from "react";
 
 import { Box, Typography, List, ListItem, Divider } from "@mui/material";
 
-import NavBar from "./Navbar";
+import NavBar from "./NavBar";
 import postRequest from "../helpers/api/post";
 
 export default function CartHistory() {
