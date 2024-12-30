@@ -16,6 +16,8 @@ function RouteConfig() {
   return (
     <Routes>
       <Route path="/" element={<LoginForm />} />
+      <Route path="/paymentStatus/:sessionId" element={<PaymentStatus />} />
+      <Route path="/signUp" element={<SignUp />} />
       <Route
         path="/booklist"
         element={
@@ -56,8 +58,6 @@ function RouteConfig() {
           </PrivateRoute>
         }
       />
-      <Route path="/paymentStatus/:sessionId" element={<PaymentStatus />} />
-      <Route path="/signUp" element={<SignUp />} />
     </Routes>
   );
 }
