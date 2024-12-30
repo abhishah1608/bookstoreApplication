@@ -1,5 +1,5 @@
 // import React libraries.
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, BrowserRouter } from "react-router-dom";
 
 // import dependencies from the project.
 import PrivateRoute from "./PrivateRoute";
@@ -15,52 +15,54 @@ import PaymentStatus from "./PaymentStatus";
 
 function RouteConfig() {
   return (
-    <Routes>
-      <Route path="/" element={<LoginForm />} />
-      <Route path="/paymentstatus/:sessionId" element={<PaymentStatus />} />
-      <Route path="/signup" element={<SignUp />} />
-      <Route path="/register" element={<Register />} />
-      <Route
-        path="/booklist"
-        element={
-          <PrivateRoute>
-            <BookList />
-          </PrivateRoute>
-        }
-      />
-      <Route
-        path="/cart"
-        element={
-          <PrivateRoute>
-            <Cart />
-          </PrivateRoute>
-        }
-      />
-      <Route
-        path="/history"
-        element={
-          <PrivateRoute>
-            <CartHistory />
-          </PrivateRoute>
-        }
-      />
-      <Route
-        path="/logout"
-        element={
-          <PrivateRoute>
-            <Logout />
-          </PrivateRoute>
-        }
-      />
-      <Route
-        path="/paymentform"
-        element={
-          <PrivateRoute>
-            <PaymentForm />
-          </PrivateRoute>
-        }
-      />
-    </Routes>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<LoginForm />} />
+        <Route path="/paymentstatus/:sessionId" element={<PaymentStatus />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/register" element={<Register />} />
+        <Route
+          path="/booklist"
+          element={
+            <PrivateRoute>
+              <BookList />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/cart"
+          element={
+            <PrivateRoute>
+              <Cart />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/history"
+          element={
+            <PrivateRoute>
+              <CartHistory />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/logout"
+          element={
+            <PrivateRoute>
+              <Logout />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/paymentform"
+          element={
+            <PrivateRoute>
+              <PaymentForm />
+            </PrivateRoute>
+          }
+        />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
