@@ -16,8 +16,8 @@ function RouteConfig() {
   return (
     <Routes>
       <Route path="/" element={<LoginForm />} />
-      <Route path="/paymentStatus/:sessionId" element={<PaymentStatus />} />
-      <Route path="/signUp" element={<SignUp />} />
+      <Route path="/paymentstatus/:sessionId" element={<PaymentStatus />} />
+      <Route path="/signup" element={<SignUp />} />
       <Route
         path="/booklist"
         element={

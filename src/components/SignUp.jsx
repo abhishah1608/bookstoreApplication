@@ -217,7 +217,7 @@ export default function SignUp() {
           }}
         >
           <Link
-            to="/"
+            href="/"
             variant="body2"
             underline="hover"
             sx={{ cursor: "pointer" }}
