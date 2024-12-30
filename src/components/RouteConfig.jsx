@@ -7,7 +7,7 @@ import CartHistory from "./CartHistory";
 import Cart from "./Cart";
 import LoginForm from "./LoginForm";
 import Logout from "./Logout";
-import SignUp from "./Signup";
+import SignUp from "./SignUp";
 import BookList from "./BookList";
 import PaymentForm from "./PaymentForm";
 import PaymentStatus from "./PaymentStatus";
