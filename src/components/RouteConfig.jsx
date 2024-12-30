@@ -8,6 +8,7 @@ import Cart from "./Cart";
 import LoginForm from "./LoginForm";
 import Logout from "./Logout";
 import SignUp from "./SignUp";
+import Register from "./Register";
 import BookList from "./BookList";
 import PaymentForm from "./PaymentForm";
 import PaymentStatus from "./PaymentStatus";
@@ -18,6 +19,7 @@ function RouteConfig() {
       <Route path="/" element={<LoginForm />} />
       <Route path="/paymentstatus/:sessionId" element={<PaymentStatus />} />
       <Route path="/signup" element={<SignUp />} />
+      <Route path="/register" element={<Register />} />
       <Route
         path="/booklist"
         element={
