@@ -161,7 +161,7 @@ function LoginForm() {
           }}
         >
           <Link
-            href="/SignUp"
+            href="/signUp"
             variant="body2"
             underline="hover"
             sx={{ cursor: "pointer" }}

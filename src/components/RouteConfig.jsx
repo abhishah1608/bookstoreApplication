@@ -57,7 +57,7 @@ function RouteConfig() {
         }
       />
       <Route path="/paymentStatus/:sessionId" element={<PaymentStatus />} />
-      <Route path="/SignUp" element={<SignUp />} />
+      <Route path="/signUp" element={<SignUp />} />
     </Routes>
   );
 }
