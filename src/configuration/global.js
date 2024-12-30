@@ -1,6 +1,6 @@
 function global() {
   var obj = {};
-  obj.BaseAPIURL = "http://localhost:54701/api/";
+  obj.BaseAPIURL = "https://bookstoreserviceapi.azurewebsites.net/api/";
   obj.language = "en";
   return obj;
 }
