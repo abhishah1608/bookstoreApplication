@@ -20,9 +20,9 @@ function RouteConfig() {
       <Route
         path="/paymentstatus/:sessionId"
         element={
-          <PrivateRoute>
+          <PublicRoute>
             <PaymentStatus />
-          </PrivateRoute>
+          </PublicRoute>
         }
       />
       <Route

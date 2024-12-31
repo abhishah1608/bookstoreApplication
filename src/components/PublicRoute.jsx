@@ -1,5 +1,5 @@
 const PublicRoute = ({ children }) => {
-  return children;
+  return 1 === 1 ? children : <Navigate to="/" replace />;
 };
 
 export default PublicRoute;
