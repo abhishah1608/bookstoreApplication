@@ -100,6 +100,8 @@ export default function PaymentForm() {
         var paymentInfo = { ...paymentform }; // Ensure paymentform is copied (if needed)
         paymentInfo.productInfo = product;
         paymentInfo.IsReact = "Y";
+        paymentInfo.loginId = Number(localStorage.getItem("LoginId"));
+        paymentInfo.userId = Number(localStorage.getItem("userId"));
 
         const url = "StripePayment/Checkout";
         const response = await postRequest(url, paymentInfo);
