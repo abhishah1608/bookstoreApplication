@@ -38,10 +38,13 @@ export default function PaymentStatus() {
 
       var obj_removeCart = JSON.parse(removeCart);
 
+      var amount = 0;
+
       if (obj_removeCart && obj_removeCart.length > 0) {
         obj_removeCart.forEach((element) => {
           element.IsRemoved = 1;
           element.total = element.Price;
+          amount += element.Price * element.Quantity;
         });
       }
 
@@ -50,6 +53,8 @@ export default function PaymentStatus() {
       request.UserId = Number(sessionStorage.getItem("userId"));
 
       request.LoginId = Number(localStorage.getItem("LoginId"));
+
+      request.Amount = amount;
 
       const url_p = "Book/AddOrder";
       await postRequest(url_p, request);
@@ -61,8 +66,6 @@ export default function PaymentStatus() {
       res.header =
         "Your Order placed Successfully and payment is successful with OrderId " +
         res.OrderId;
-
-      request.Amount = res.amount;
 
       setResponse(res);
 
