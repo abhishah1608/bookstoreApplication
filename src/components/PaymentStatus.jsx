@@ -60,7 +60,7 @@ export default function PaymentStatus() {
 
       request.UserId = Number(sessionStorage.getItem("userId"));
 
-      request.LoginId = Number(sessionStorage.getItem("LoginId"));
+      request.LoginId = Number(localStorage.getItem("LoginId"));
 
       const url_p = "Book/AddOrder";
       await postRequest(url_p, request);

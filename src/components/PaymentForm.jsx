@@ -101,7 +101,7 @@ export default function PaymentForm() {
         paymentInfo.productInfo = product;
         paymentInfo.IsReact = "Y";
         paymentInfo.loginId = Number(localStorage.getItem("LoginId"));
-        paymentInfo.userId = Number(localStorage.getItem("userId"));
+        paymentInfo.userId = Number(sessionStorage.getItem("userId"));
 
         const url = "StripePayment/Checkout";
         const response = await postRequest(url, paymentInfo);
