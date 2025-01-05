@@ -32,15 +32,6 @@ export default function PaymentStatus() {
 
   useEffect(() => {
     const fetchPaymentDetails = async () => {
-      const url =
-        "StripePayment/GetPaymentDetail?checkoutSessionId=" + sessionId;
-      const res = await getRequest(url);
-      res.header =
-        "Your Order placed Successfully and payment is successful with OrderId " +
-        res.OrderId;
-
-      setResponse(res);
-
       var request = {};
 
       var removeCart = sessionStorage.getItem("CartList");
@@ -56,14 +47,24 @@ export default function PaymentStatus() {
 
       request.detail = obj_removeCart;
 
-      request.Amount = res.amount;
-
       request.UserId = Number(sessionStorage.getItem("userId"));
 
       request.LoginId = Number(localStorage.getItem("LoginId"));
 
       const url_p = "Book/AddOrder";
       await postRequest(url_p, request);
+
+      const url =
+        "StripePayment/GetPaymentDetail?checkoutSessionId=" + sessionId;
+      const res = await getRequest(url);
+
+      res.header =
+        "Your Order placed Successfully and payment is successful with OrderId " +
+        res.OrderId;
+
+      request.Amount = res.amount;
+
+      setResponse(res);
 
       const url_post = "Book/AddCartDetails";
       await postRequest(url_post, obj_removeCart);
